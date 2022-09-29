@@ -6,7 +6,7 @@ import androidx.test.rule.GrantPermissionRule
 import com.jens.automation2.ActivityMainTabLayout
 import com.jens.automation2.screens.locations.AddLocationScreen
 import com.jens.automation2.screens.locations.LocationsScreen
-import com.jens.automation2.tests.DataForTests.Companion.LOCATION_NAME
+import com.jens.automation2.tests.DataForTests.LOCATION_NAME
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -33,16 +33,16 @@ class TestLocations {
      */
     @Test
     fun checkAddingALocation() {
-        with(LocationsScreen()) {
+        with(LocationsScreen) {
             actionOpenLocation()
             actionClickOnAddLocationButton()
         }
-        with(AddLocationScreen()) {
+        with(AddLocationScreen) {
             actionTypeTextOnLocationName(LOCATION_NAME)
             actionGetCurrentLocation()
             actionCLickOnSaveLocationButton()
         }
-        with(LocationsScreen()) {
+        with(LocationsScreen) {
             assertionLocationIsDisplayed(LOCATION_NAME)
             actionDeleteLocationByName(LOCATION_NAME)
             assertionLocationIsNotDisplayed(LOCATION_NAME)

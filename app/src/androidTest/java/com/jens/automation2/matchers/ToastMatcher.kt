@@ -8,6 +8,7 @@ import org.hamcrest.Description
 import org.hamcrest.TypeSafeMatcher
 
 class ToastMatcher : TypeSafeMatcher<Root>() {
+
     override fun describeTo(description: Description) {
         description.appendText("is toast")
     }

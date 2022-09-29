@@ -26,7 +26,7 @@ fun waitForView(
             return interaction
         } catch (e: NoMatchingViewException) {
             lastException = e
-            Thread.sleep(intervalMillis)
+            ActionWaitingTime(intervalMillis)
         }
     } while (System.currentTimeMillis() < endTime)
 

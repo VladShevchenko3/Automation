@@ -2,16 +2,15 @@ package com.jens.automation2.matchers
 
 import android.view.View
 import android.widget.SeekBar
-
 import androidx.test.espresso.UiController
 import androidx.test.espresso.ViewAction
-import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom
 import org.hamcrest.Matcher
 
-
 class ActionWithSeekBar(private val progress: Int) : ViewAction {
+
     override fun getConstraints(): Matcher<View> {
-        return ViewMatchers.isAssignableFrom(SeekBar::class.java)
+        return isAssignableFrom(SeekBar::class.java)
     }
 
     override fun getDescription() = "Set a progress on a $progress"

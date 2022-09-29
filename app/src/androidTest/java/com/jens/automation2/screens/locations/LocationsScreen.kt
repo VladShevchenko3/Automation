@@ -11,7 +11,8 @@ import com.jens.automation2.R
 import com.jens.automation2.screens.WithTabs
 import org.hamcrest.Matcher
 
-class LocationsScreen : WithTabs {
+object LocationsScreen : WithTabs {
+
     private val addLocationButton: Matcher<View> = withId(R.id.bAddPoi)
     private val deleteLocationButton: Matcher<View> = withText("Delete")
 

@@ -11,7 +11,7 @@ import com.jens.automation2.R
 import com.jens.automation2.screens.WithTabs
 import org.hamcrest.Matcher
 
-class ProfilesScreen : WithTabs {
+object ProfilesScreen : WithTabs {
 
     private val addProfileButton: Matcher<View> = withId(R.id.bAddProfile)
     private val deleteRuleButton: Matcher<View> = withText("Delete")
@@ -32,5 +32,4 @@ class ProfilesScreen : WithTabs {
     fun assertionProfileIsNotDisplayed(profileName: String) {
         onView(withText(profileName)).check(doesNotExist())
     }
-
 }

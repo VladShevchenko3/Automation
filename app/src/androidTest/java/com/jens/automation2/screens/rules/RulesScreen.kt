@@ -11,18 +11,13 @@ import com.jens.automation2.R
 import com.jens.automation2.screens.WithTabs
 import org.hamcrest.Matcher
 
-
-class RulesScreen : WithTabs {
+object RulesScreen : WithTabs {
 
     private val addRuleButton: Matcher<View> = withId(R.id.bAddRule)
     private val deleteRuleButton: Matcher<View> = withText("Delete")
 
     fun actionClickOnAddRuleButton() {
         onView(addRuleButton).perform(click())
-    }
-
-    fun actionFindRule(nameRule: String) {
-        onView(withText(nameRule))
     }
 
     fun actionDeleteRuleByName(nameRule: String) {

@@ -6,8 +6,8 @@ import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import com.jens.automation2.R
+import com.jens.automation2.espresso.editTextField
 import com.jens.automation2.espresso.findElementInList
-import com.jens.automation2.espresso.typeText
 import org.hamcrest.Matcher
 
 enum class TypeOfTrigger(val title: String) {
@@ -15,13 +15,13 @@ enum class TypeOfTrigger(val title: String) {
     HeadsetConnection("Headset connection")
 }
 
-class TypeOfTriggerScreen {
+object TypeOfTriggerScreen {
 
     private val wifiTitleText: Matcher<View> = withId(R.id.etTriggerWifiName)
     private val wifiSaveButton: Matcher<View> = withId(R.id.bTriggerWifiSave)
     fun actionAddWifiConnectionTrigger(wifiName: String) {
         findElementInList(TypeOfTrigger.WifiConnection.title).perform(click())
-        typeText(wifiTitleText, wifiName)
+        editTextField(wifiTitleText, wifiName)
         onView(wifiSaveButton).perform(click())
     }
 
@@ -30,5 +30,4 @@ class TypeOfTriggerScreen {
         onView(withText(headsetStatus)).perform(click())
         onView(withText(headsetType)).perform(click())
     }
-
 }
