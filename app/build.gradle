@@ -9,7 +9,7 @@ android {
         applicationId "com.jens.automation2"
         minSdkVersion 18
         compileSdkVersion 33
-        buildToolsVersion '29.0.2'
+        buildToolsVersion '30.0.3'
         useLibrary  'org.apache.http.legacy'
         versionCode 122
         versionName "1.7.7"

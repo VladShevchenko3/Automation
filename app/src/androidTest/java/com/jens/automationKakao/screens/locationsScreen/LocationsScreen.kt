@@ -8,6 +8,7 @@ import io.github.kakaocup.kakao.text.KButton
 import io.github.kakaocup.kakao.text.KTextView
 
 class LocationsScreen : Screen<LocationsScreen>(), WithTabs {
+
     private val addLocationButton = KButton { withId(R.id.bAddPoi) }
     private val deleteLocationView = KView { withText(R.string.deleteCapital) }
 

@@ -26,18 +26,18 @@ class TestOverview : BaseUITests {
     private val overviewScreen = OverviewScreen()
 
     /* Scenario
-    Step 1. Open the Rules;
-  * Step 2. Tap 'Add rule';
-  * Step 3. Enter the name of the rule;
-  * Step 4. Tap 'add trigger' (Wifi connection);
-  * Step 5. Tap 'Add action' (USB Tethering, status - Activate);
-  * Step 6. Save the rule;
-  * Step 7. Open the Overview
-  * Step 8. Tap service status
-  * Step 9. Check that service status is "ON"
-  * Step 10. Tap service status
-  * Step 11. Delete the rule
-       */
+    * Step 1. Open the Rules;
+    * Step 2. Tap 'Add rule';
+    * Step 3. Enter the name of the rule;
+    * Step 4. Tap 'add trigger' (Wifi connection);
+    * Step 5. Tap 'Add action' (USB Tethering, status - Activate);
+    * Step 6. Save the rule;
+    * Step 7. Open the Overview
+    * Step 8. Tap service status
+    * Step 9. Check that service status is "ON"
+    * Step 10. Tap service status
+    * Step 11. Delete the rule
+    * */
     @Test
     fun checkLaunchingService() {
         rulesScreen.actionOpenRules()

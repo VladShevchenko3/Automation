@@ -43,5 +43,4 @@ class ProfilesScreen : Screen<ProfilesScreen>(), WithTabs {
             doesNotExist()
         }
     }
-
 }

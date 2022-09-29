@@ -10,6 +10,7 @@ import io.github.kakaocup.kakao.text.KButton
 import junit.framework.Assert.assertFalse
 
 class OverviewScreen : Screen<OverviewScreen>(), WithTabs {
+
     private val serviceButton = KButton { withId(R.id.tbArmMastListener) }
     private val device: UiDevice
         get() = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())

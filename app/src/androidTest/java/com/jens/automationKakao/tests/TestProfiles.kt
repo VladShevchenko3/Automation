@@ -6,12 +6,14 @@ import com.jens.automationKakao.screens.profilesScreen.ProfilesScreen
 import com.jens.automationKakao.tests.DataForTests.Companion.LEVEL_VOLUME_NOTIFICATIONS
 import com.jens.automationKakao.tests.DataForTests.Companion.PROFILE_NAME
 import com.jens.automationKakao.tests.DataForTests.Companion.SOUND_MODE
-import io.github.kakaocup.kakao.screen.Screen.Companion.onScreen
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class TestProfiles : BaseUITests {
+
+    private val profilesScreen = ProfilesScreen()
+    private val addProfileScreen = AddProfileScreen()
 
     /*Test 2. Scenario
   * Step 1. Open the Profiles;
@@ -25,20 +27,14 @@ class TestProfiles : BaseUITests {
   * */
     @Test
     fun checkAddingAProfile() {
-        onScreen<ProfilesScreen> {
-            actionOpenProfiles()
-            actionClickOnAddProfile()
-        }
-        onScreen<AddProfileScreen> {
-            actionTypeProfileName(PROFILE_NAME)
-            actionChangeSoundMode(SOUND_MODE)
-            actionChangeVolumeNotifications(LEVEL_VOLUME_NOTIFICATIONS)
-            actionCLickOnSaveProfileButton()
-        }
-        onScreen<ProfilesScreen> {
-            assertionProfileIsDisplayed(PROFILE_NAME)
-            actionDeleteProfileByName(PROFILE_NAME)
-            assertionProfileIsNotDisplayed(PROFILE_NAME)
-        }
+        profilesScreen.actionOpenProfiles()
+        profilesScreen.actionClickOnAddProfile()
+        addProfileScreen.actionTypeProfileName(PROFILE_NAME)
+        addProfileScreen.actionChangeSoundMode(SOUND_MODE)
+        addProfileScreen.actionChangeVolumeNotifications(LEVEL_VOLUME_NOTIFICATIONS)
+        addProfileScreen.actionCLickOnSaveProfileButton()
+        profilesScreen.assertionProfileIsDisplayed(PROFILE_NAME)
+        profilesScreen.actionDeleteProfileByName(PROFILE_NAME)
+        profilesScreen.assertionProfileIsNotDisplayed(PROFILE_NAME)
     }
 }

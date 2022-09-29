@@ -20,6 +20,7 @@ enum class HeadsetStatus {
 }
 
 class TypeOfTriggerScreen : Screen<TypeOfTriggerScreen>() {
+
     private val wifiTitleText = KEditText { withId(R.id.etTriggerWifiName) }
     private val wifiSaveButton = KButton { withId(R.id.bTriggerWifiSave) }
     private val connectedView = KView { withText(R.string.connected) }

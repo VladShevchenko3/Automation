@@ -4,6 +4,7 @@ import android.R
 import io.github.kakaocup.kakao.image.KImageView
 
 interface WithTabs {
+
     companion object {
         private val dashboard = KImageView { withId(R.id.tabs) }
         private val rulesButton = KImageView { withText("Rules") }

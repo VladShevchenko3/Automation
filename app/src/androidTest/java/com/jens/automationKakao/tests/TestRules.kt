@@ -22,19 +22,19 @@ class TestRules : BaseUITests {
     private val typeOfAction = TypeOfActionScreen()
 
     /*
-*  Test 1. Scenario
-* Step 1. Open the Rules;
-* Step 2. Tap 'Add rule';
-* Step 3. Enter the name of the rule;
-* Step 4. Tap 'add trigger' (Wifi connection);
-* Step 5. Find and check the added trigger;
-* Step 6. Tap 'add trigger' (Headset connection, status - connected, type - Headphone);
-* Step 7. Find and check the added action;
-* Step 8. Tap 'Add action' (Set Screen brightness);
-* Step 9. Save the rule;
-* Step 10. Find and check the added rule;
-* Step 11. Delete and check the added rule;
-* */
+    *  Test 1. Scenario
+    * Step 1. Open the Rules;
+    * Step 2. Tap 'Add rule';
+    * Step 3. Enter the name of the rule;
+    * Step 4. Tap 'add trigger' (Wifi connection);
+    * Step 5. Find and check the added trigger;
+    * Step 6. Tap 'add trigger' (Headset connection, status - connected, type - Headphone);
+    * Step 7. Tap 'Add action' (Set Screen brightness);
+    * Step 8. Find and check the added action;
+    * Step 9. Save the rule;
+    * Step 10. Find and check the added rule;
+    * Step 11. Delete and check the added rule;
+    * */
     @Test
     fun checkAddingTheRule() {
         rulesScreen.actionOpenRules()
