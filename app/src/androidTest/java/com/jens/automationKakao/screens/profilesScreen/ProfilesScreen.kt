@@ -5,41 +5,37 @@ import com.jens.automationKakao.screens.WithTabs
 import io.github.kakaocup.kakao.common.views.KView
 import io.github.kakaocup.kakao.screen.Screen
 import io.github.kakaocup.kakao.text.KButton
+import io.github.kakaocup.kakao.text.KTextView
 
 class ProfilesScreen : Screen<ProfilesScreen>(), WithTabs {
 
     private val addProfileButton = KButton { withId(R.id.bAddProfile) }
-    private val deleteProfileView = KView { withText(R.string.deleteCapital) }
+    private val deleteProfileView = KTextView { withText(R.string.deleteCapital) }
+    private fun profileNameView(profileName: String) = KTextView { withText(profileName) }
 
     fun actionClickOnAddProfile() {
         addProfileButton {
-            isVisible()
             click()
         }
     }
 
     fun actionDeleteProfileByName(profileName: String) {
-        val profileNameView = KView { withText(profileName) }
-        profileNameView {
-            isVisible()
+        profileNameView(profileName).invoke {
             longClick()
         }
         deleteProfileView {
-            isVisible()
             click()
         }
     }
 
     fun assertionProfileIsDisplayed(profileName: String) {
-        val profileNameView = KView { withText(profileName) }
-        profileNameView {
+        profileNameView(profileName).invoke {
             isVisible()
         }
     }
 
     fun assertionProfileIsNotDisplayed(profileName: String) {
-        val profileNameView = KView { withText(profileName) }
-        profileNameView {
+        profileNameView(profileName).invoke {
             doesNotExist()
         }
     }

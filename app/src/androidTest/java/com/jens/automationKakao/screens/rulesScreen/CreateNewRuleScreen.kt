@@ -13,10 +13,8 @@ class CreateNewRuleScreen : Screen<CreateNewRuleScreen>() {
     private val addTriggerButton = KButton { withId(R.id.cmdTriggerAdd) }
     private val addActionButton = KButton { withId(R.id.cmdActionAdd) }
 
-
     fun actionTypeRuleName(ruleName: String) {
         ruleNameTextField {
-            isVisible()
             typeText(ruleName)
             Espresso.closeSoftKeyboard()
         }
@@ -24,7 +22,6 @@ class CreateNewRuleScreen : Screen<CreateNewRuleScreen>() {
 
     fun actionClickAddTriggerButton() {
         addTriggerButton {
-            isVisible()
             isClickable()
             click()
         }
@@ -32,14 +29,12 @@ class CreateNewRuleScreen : Screen<CreateNewRuleScreen>() {
 
     fun actionClickAddActionButton() {
         addActionButton {
-            isVisible()
             click()
         }
     }
 
     fun actionClickOnSaveRuleButton() {
         saveRuleButton {
-            isVisible()
             click()
         }
     }

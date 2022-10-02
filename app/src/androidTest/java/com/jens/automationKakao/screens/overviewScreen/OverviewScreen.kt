@@ -17,17 +17,16 @@ class OverviewScreen : Screen<OverviewScreen>(), WithTabs {
 
     fun actionClickOnServiceButton() {
         serviceButton {
-            isVisible()
             click()
         }
     }
 
     fun assertionServiceButtonHasText(text: String) {
         serviceButton {
-            isVisible()
             hasText(text)
         }
     }
+
     //with UI Device
     fun actionWaitForViewDoesNotExist(message: String) {
         device.waitForIdle()

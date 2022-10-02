@@ -1,25 +1,26 @@
 package com.jens.automationKakao.tests
 
+import androidx.test.ext.junit.rules.activityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.jens.automation2.ActivityMainTabLayout
 import com.jens.automationKakao.screens.rulesScreen.CreateNewRuleScreen
 import com.jens.automationKakao.screens.rulesScreen.RulesScreen
-import com.jens.automationKakao.screens.rulesScreen.TypeOfActionScreen
-import com.jens.automationKakao.screens.rulesScreen.TypeOfTriggerScreen
-import com.jens.automationKakao.tests.DataForTests.Companion.ACTION_PERCENT_SCREEN_BRIGHTNESS
+import com.jens.automationKakao.screens.rulesScreen.actionsScreens.SetScreenBrightnessScreen
+import com.jens.automationKakao.screens.rulesScreen.triggersScreens.HeadsetConnectionScreen
+import com.jens.automationKakao.screens.rulesScreen.triggersScreens.WifiConnectionScreen
+import com.jens.automationKakao.tests.DataForTests.Companion.PERCENT_SCREEN_BRIGHTNESS
 import com.jens.automationKakao.tests.DataForTests.Companion.RULE_NAME
-import com.jens.automationKakao.tests.DataForTests.Companion.TRIGGER_HEADSET_STATUS
-import com.jens.automationKakao.tests.DataForTests.Companion.TRIGGER_HEADSET_TYPE
 import com.jens.automationKakao.tests.DataForTests.Companion.TRIGGER_WIFI_NAME
+import io.github.kakaocup.kakao.screen.Screen.Companion.onScreen
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class TestRules : BaseUITests {
 
-    private val rulesScreen = RulesScreen()
-    private val createNewRuleScreen = CreateNewRuleScreen()
-    private val typeOfTrigger = TypeOfTriggerScreen()
-    private val typeOfAction = TypeOfActionScreen()
+    @get:Rule
+    var activityScenarioRule = activityScenarioRule<ActivityMainTabLayout>()
 
     /*
     *  Test 1. Scenario
@@ -37,18 +38,42 @@ class TestRules : BaseUITests {
     * */
     @Test
     fun checkAddingTheRule() {
-        rulesScreen.actionOpenRules()
-        rulesScreen.actionClickOnAddRuleButton()
-        createNewRuleScreen.actionTypeRuleName(RULE_NAME)
-        createNewRuleScreen.actionClickAddTriggerButton()
-        typeOfTrigger.actionAddWifiConnectionTrigger(TRIGGER_WIFI_NAME)
-        createNewRuleScreen.actionClickAddTriggerButton()
-        typeOfTrigger.actionAddHeadsetConnection(TRIGGER_HEADSET_STATUS, TRIGGER_HEADSET_TYPE)
-        createNewRuleScreen.actionClickAddActionButton()
-        typeOfAction.actionAddScreenBrightness(ACTION_PERCENT_SCREEN_BRIGHTNESS)
-        createNewRuleScreen.actionClickOnSaveRuleButton()
-        rulesScreen.assertionRuleIsDisplayed(RULE_NAME)
-        rulesScreen.actionDeleteRuleByName(RULE_NAME)
-        rulesScreen.assertionRuleIsNotDisplayed(RULE_NAME)
+        onScreen<RulesScreen> {
+            actionOpenRules()
+            actionClickOnAddRuleButton()
+        }
+        onScreen<CreateNewRuleScreen> {
+            actionTypeRuleName(RULE_NAME)
+            actionClickAddTriggerButton()
+        }
+        onScreen<WifiConnectionScreen> {
+            actionClickOnTheWifiConnection()
+            actionTypeWifiName(TRIGGER_WIFI_NAME)
+            actionClickOnSaveWifiButton()
+        }
+        onScreen<CreateNewRuleScreen> {
+            actionClickAddTriggerButton()
+        }
+        onScreen<HeadsetConnectionScreen> {
+            actionClickOnTheHeadsetConnection()
+            actionClickOnConnectedView()
+            actionClickOnHeadphoneView()
+        }
+        onScreen<CreateNewRuleScreen> {
+            actionClickAddActionButton()
+        }
+        onScreen<SetScreenBrightnessScreen> {
+            actionClickOnSetScreenBrightness()
+            actionSetProgressOnSeekBar(PERCENT_SCREEN_BRIGHTNESS)
+            actionClickOnApplyButton()
+        }
+        onScreen<CreateNewRuleScreen> {
+            actionClickOnSaveRuleButton()
+        }
+        onScreen<RulesScreen> {
+            assertionRuleIsDisplayed(RULE_NAME)
+            actionDeleteRuleByName(RULE_NAME)
+            assertionRuleIsNotDisplayed(RULE_NAME)
+        }
     }
 }

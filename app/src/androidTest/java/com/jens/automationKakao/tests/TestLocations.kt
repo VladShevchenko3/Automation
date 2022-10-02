@@ -1,10 +1,13 @@
 package com.jens.automationKakao.tests
 
+import androidx.test.ext.junit.rules.activityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.GrantPermissionRule
+import com.jens.automation2.ActivityMainTabLayout
 import com.jens.automationKakao.screens.locationsScreen.AddLocationScreen
 import com.jens.automationKakao.screens.locationsScreen.LocationsScreen
 import com.jens.automationKakao.tests.DataForTests.Companion.LOCATION_NAME
+import io.github.kakaocup.kakao.screen.Screen.Companion.onScreen
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -13,10 +16,11 @@ import org.junit.runner.RunWith
 class TestLocations : BaseUITests {
 
     @get:Rule
+    var activityScenarioRule = activityScenarioRule<ActivityMainTabLayout>()
+
+    @get:Rule
     var mRuntimePermissionRule: GrantPermissionRule =
         GrantPermissionRule.grant(android.Manifest.permission.ACCESS_FINE_LOCATION)
-    private val locationsScreen = LocationsScreen()
-    private val addLocationScreen = AddLocationScreen()
 
     /*
      * Scenario
@@ -30,13 +34,19 @@ class TestLocations : BaseUITests {
      */
     @Test
     fun checkAddingALocation() {
-        locationsScreen.actionOpenLocation()
-        locationsScreen.actionClickOnAddLocationButton()
-        addLocationScreen.actionTypeTextOnLocationName(LOCATION_NAME)
-        addLocationScreen.actionGetCurrentLocation()
-        addLocationScreen.actionCLickOnSaveLocationButton()
-        locationsScreen.assertionLocationIsDisplayed(LOCATION_NAME)
-        locationsScreen.actionDeleteLocationByName(LOCATION_NAME)
-        locationsScreen.assertionLocationIsNotDisplayed(LOCATION_NAME)
+        onScreen<LocationsScreen> {
+            actionOpenLocation()
+            actionClickOnAddLocationButton()
+        }
+        onScreen<AddLocationScreen> {
+            actionTypeTextOnLocationName(LOCATION_NAME)
+            actionGetCurrentLocation()
+            actionCLickOnSaveLocationButton()
+        }
+        onScreen<LocationsScreen> {
+            assertionLocationIsDisplayed(LOCATION_NAME)
+            actionDeleteLocationByName(LOCATION_NAME)
+            assertionLocationIsNotDisplayed(LOCATION_NAME)
+        }
     }
 }

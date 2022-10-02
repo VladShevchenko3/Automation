@@ -8,21 +8,22 @@ import io.github.kakaocup.kakao.edit.KEditText
 import io.github.kakaocup.kakao.progress.KSeekBar
 import io.github.kakaocup.kakao.screen.Screen
 import io.github.kakaocup.kakao.text.KButton
+import io.github.kakaocup.kakao.text.KTextView
 
 class AddProfileScreen : Screen<AddProfileScreen>() {
 
     private val profileNameTextField = KEditText { withId(R.id.etName) }
     private val changeSoundModeCheckBox = KCheckBox { withId(R.id.checkBoxChangeSoundMode) }
-    private val soundModeSpinner = KView { withId(R.id.spinnerSoundMode) }
+    private val soundModeSpinner = KTextView { withId(R.id.spinnerSoundMode) }
     private val changeVolumeNotificationsCheckBox = KCheckBox {
         withId(R.id.checkBoxChangeVolumeNotifications)
     }
     private val volumeNotificationsSeekBar = KSeekBar { withId(R.id.seekBarVolumeNotifications) }
     private val saveProfileButton = KButton { withId(R.id.bSaveProfile) }
+    private fun soundModeView(soundMode: String) = KTextView { withText(soundMode) }
 
     fun actionTypeProfileName(profileName: String) {
         profileNameTextField {
-            isVisible()
             typeText(profileName)
             Espresso.closeSoftKeyboard()
         }
@@ -30,16 +31,12 @@ class AddProfileScreen : Screen<AddProfileScreen>() {
 
     fun actionChangeSoundMode(soundMode: String) {
         changeSoundModeCheckBox {
-            isVisible()
             click()
         }
         soundModeSpinner {
-            isVisible()
             click()
         }
-        val soundModeView = KView { withText(soundMode) }
-        soundModeView {
-            isVisible()
+        soundModeView(soundMode).invoke {
             click()
         }
     }
@@ -47,12 +44,10 @@ class AddProfileScreen : Screen<AddProfileScreen>() {
     fun actionChangeVolumeNotifications(progressVolume: Int) {
         changeVolumeNotificationsCheckBox {
             scrollTo()
-            isVisible()
             click()
         }
         volumeNotificationsSeekBar {
             scrollTo()
-            isVisible()
             setProgress(progressVolume)
         }
     }
