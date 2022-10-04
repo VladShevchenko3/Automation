@@ -7,11 +7,11 @@ import androidx.test.espresso.action.ViewActions.scrollTo
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import com.jens.automation2.R
-import com.jens.automation2.espresso.typeText
+import com.jens.automation2.espresso.editTextField
 import com.jens.automation2.matchers.actionWithSeekBar
 import org.hamcrest.Matcher
 
-class AddProfileScreen {
+object AddProfileScreen {
 
     private val profileNameTextField: Matcher<View> = withId(R.id.etName)
     private val changeSoundModeCheckBox: Matcher<View> = withId(R.id.checkBoxChangeSoundMode)
@@ -22,7 +22,7 @@ class AddProfileScreen {
     private val saveProfileButton: Matcher<View> = withId(R.id.bSaveProfile)
 
     fun actionTypeProfileName(profileName: String) {
-        typeText(profileNameTextField, profileName)
+        editTextField(profileNameTextField, profileName)
     }
 
     fun actionChangeSoundMode(soundMode: String) {

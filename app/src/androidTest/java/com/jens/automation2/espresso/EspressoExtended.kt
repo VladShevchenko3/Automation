@@ -14,7 +14,7 @@ import com.jens.automation2.matchers.actionItemWithName
 import org.hamcrest.CoreMatchers.allOf
 import org.hamcrest.Matcher
 
-fun findElementWithParent(
+fun findViewWithDescendantAndWithParent(
     resource: Matcher<View>,
     resourceParent: Matcher<View>
 ): ViewInteraction {
@@ -26,7 +26,7 @@ fun findElementWithParent(
     )
 }
 
-fun typeText(resource: Matcher<View>, text: String): ViewInteraction {
+fun editTextField(resource: Matcher<View>, text: String): ViewInteraction {
     return onView(resource).perform(
         clearText(),
         TypeTextAction(text),

@@ -13,7 +13,6 @@ import com.jens.automationKakao.tests.DataForTests.Companion.RULE_NAME
 import com.jens.automationKakao.tests.DataForTests.Companion.SERVICE_ACTIVATING_MESSAGE
 import com.jens.automationKakao.tests.DataForTests.Companion.SERVICE_STARTED_MESSAGE
 import com.jens.automationKakao.tests.DataForTests.Companion.SERVICE_STOPPED_MESSAGE
-import com.jens.automationKakao.tests.DataForTests.Companion.STATUS_ON
 import com.jens.automationKakao.tests.DataForTests.Companion.TRIGGER_WIFI_NAME
 import io.github.kakaocup.kakao.screen.Screen.Companion.onScreen
 import org.junit.Rule
@@ -68,7 +67,7 @@ class TestOverview : BaseUITests {
         onScreen<OverviewScreen> {
             actionOpenOverview()
             actionClickOnServiceButton()
-            assertionServiceButtonHasText(STATUS_ON)
+            assertionServiceButtonStatusON()
             actionWaitForViewDoesNotExist(SERVICE_STARTED_MESSAGE)
             actionWaitForViewDoesNotExist(SERVICE_ACTIVATING_MESSAGE)
             actionClickOnServiceButton()

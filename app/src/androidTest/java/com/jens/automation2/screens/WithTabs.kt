@@ -6,42 +6,42 @@ import androidx.test.espresso.ViewInteraction
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
-import com.jens.automation2.espresso.findElementWithParent
+import com.jens.automation2.espresso.findViewWithDescendantAndWithParent
 import org.hamcrest.Matcher
 
 interface WithTabs {
+
     companion object {
         private val dashboard: Matcher<View> = withId(R.id.tabs)
         private val rulesButton: Matcher<View> = withText("Rules")
         private val profilesButton: Matcher<View> = withText("Profiles")
         private val locationsButton: Matcher<View> = withText("Locations")
         private val overviewButton: Matcher<View> = withText("Overview")
-
     }
 
     fun actionOpenRules() {
-        findElementWithParent(
+        findViewWithDescendantAndWithParent(
             rulesButton,
             dashboard
         ).perform(click())
     }
 
     fun actionOpenProfiles() {
-        findElementWithParent(
+        findViewWithDescendantAndWithParent(
             profilesButton,
             dashboard
         ).perform(click())
     }
 
     fun actionOpenLocation() {
-        findElementWithParent(
+        findViewWithDescendantAndWithParent(
             locationsButton,
             dashboard
         ).perform(click())
     }
 
     fun actionOpenOverview(): ViewInteraction {
-        return findElementWithParent(
+        return findViewWithDescendantAndWithParent(
             overviewButton,
             dashboard
         ).perform(click())

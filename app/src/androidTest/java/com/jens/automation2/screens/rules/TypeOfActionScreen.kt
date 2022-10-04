@@ -15,7 +15,7 @@ enum class TypeOfAction(val title: String) {
     SetScreenBrightness("Set screen brightness")
 }
 
-class TypeOfActionScreen {
+object TypeOfActionScreen {
 
     private val screenBrightnessSeekBar: Matcher<View> = withId(R.id.sbBrightness)
     private val screenBrightnessSaveButton: Matcher<View> = withId(R.id.bApplyBrightness)

@@ -6,18 +6,18 @@ import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import com.jens.automation2.R
-import com.jens.automation2.espresso.typeText
+import com.jens.automation2.espresso.editTextField
 import com.jens.automation2.matchers.waitForView
 import org.hamcrest.Matcher
 
-class AddLocationScreen {
+object AddLocationScreen {
 
     private val locationNameTextField: Matcher<View> = withId(R.id.etPoiName)
     private val getCurrentLocationButton: Matcher<View> = withId(R.id.bGetPosition)
     private val saveLocationButton: Matcher<View> = withId(R.id.bSavePoi)
 
     fun actionTypeTextOnLocationName(locationName: String) {
-        typeText(locationNameTextField, locationName)
+        editTextField(locationNameTextField, locationName)
     }
 
     fun actionGetCurrentLocation() {
