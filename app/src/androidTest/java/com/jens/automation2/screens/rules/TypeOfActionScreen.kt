@@ -19,10 +19,11 @@ object TypeOfActionScreen {
 
     private val screenBrightnessSeekBar: Matcher<View> = withId(R.id.sbBrightness)
     private val screenBrightnessSaveButton: Matcher<View> = withId(R.id.bApplyBrightness)
+    private val yesButton:Matcher<View> = withText(R.string.ok)
 
     fun actionAddUsbTethering(usbStatus: String) {
         findElementInList(TypeOfAction.UsbTethering.title).perform(click())
-        onView(withText("Ok")).perform(click())
+        onView(yesButton).perform(click())
         onView(withText(usbStatus)).perform(click())
     }
 

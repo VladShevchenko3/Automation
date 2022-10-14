@@ -14,7 +14,7 @@ import org.hamcrest.Matcher
 object ProfilesScreen : WithTabs {
 
     private val addProfileButton: Matcher<View> = withId(R.id.bAddProfile)
-    private val deleteRuleButton: Matcher<View> = withText("Delete")
+    private val deleteRuleButton: Matcher<View> = withText(R.string.deleteCapital)
 
     fun actionClickOnAddProfile() {
         onView(addProfileButton).perform(click())

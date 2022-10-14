@@ -14,7 +14,7 @@ import org.hamcrest.Matcher
 object RulesScreen : WithTabs {
 
     private val addRuleButton: Matcher<View> = withId(R.id.bAddRule)
-    private val deleteRuleButton: Matcher<View> = withText("Delete")
+    private val deleteRuleButton: Matcher<View> = withText(R.string.deleteCapital)
 
     fun actionClickOnAddRuleButton() {
         onView(addRuleButton).perform(click())

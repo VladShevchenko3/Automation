@@ -14,7 +14,7 @@ import org.hamcrest.Matcher
 object LocationsScreen : WithTabs {
 
     private val addLocationButton: Matcher<View> = withId(R.id.bAddPoi)
-    private val deleteLocationButton: Matcher<View> = withText("Delete")
+    private val deleteLocationButton: Matcher<View> = withText(R.string.deleteCapital)
 
     fun actionClickOnAddLocationButton() {
         onView(addLocationButton).perform(click())
