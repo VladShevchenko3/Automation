@@ -3,17 +3,17 @@ package com.jens.automationKakao.matches
 import android.view.View
 import androidx.test.espresso.UiController
 import androidx.test.espresso.ViewAction
-import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.espresso.matcher.ViewMatchers.isRoot
 import org.hamcrest.Matcher
 
-class ActionWaitingTime(private val delay: Long) : ViewAction {
+class ActionWaitingTime(private val delayMillis: Long) : ViewAction {
     override fun getConstraints(): Matcher<View> {
-        return ViewMatchers.isRoot()
+        return isRoot()
     }
 
-    override fun getDescription() = "wait for " + delay + "milliseconds"
+    override fun getDescription() = "wait for " + delayMillis + "milliseconds"
 
     override fun perform(uiController: UiController, view: View) {
-        uiController.loopMainThreadForAtLeast(delay)
+        uiController.loopMainThreadForAtLeast(delayMillis)
     }
 }
