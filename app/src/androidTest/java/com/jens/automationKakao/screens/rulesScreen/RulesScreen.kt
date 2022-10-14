@@ -1,7 +1,7 @@
 package com.jens.automationKakao.screens.rulesScreen
 
 import com.jens.automation2.R
-import com.jens.automation2.screens.WithTabs
+import com.jens.automationKakao.screens.WithTabs
 import io.github.kakaocup.kakao.screen.Screen
 import io.github.kakaocup.kakao.text.KButton
 import io.github.kakaocup.kakao.text.KTextView

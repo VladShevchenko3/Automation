@@ -8,11 +8,9 @@ import com.jens.automationKakao.matches.actionItemWithName
 import io.github.kakaocup.kakao.edit.KEditText
 import io.github.kakaocup.kakao.screen.Screen
 import io.github.kakaocup.kakao.text.KButton
-import io.github.kakaocup.kakao.text.KTextView
 
 class WifiConnectionScreen : Screen<WifiConnectionScreen>() {
 
-    private val wifiConnectionView = KTextView { withText(R.string.wifiConnection) }
     private val wifiConnectionString = "Wifi connection"
     private val wifiTitleText = KEditText { withId(R.id.etTriggerWifiName) }
     private val wifiSaveButton = KButton { withId(R.id.bTriggerWifiSave) }

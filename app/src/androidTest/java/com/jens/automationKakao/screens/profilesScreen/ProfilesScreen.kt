@@ -2,7 +2,6 @@ package com.jens.automationKakao.screens.profilesScreen
 
 import com.jens.automation2.R
 import com.jens.automationKakao.screens.WithTabs
-import io.github.kakaocup.kakao.common.views.KView
 import io.github.kakaocup.kakao.screen.Screen
 import io.github.kakaocup.kakao.text.KButton
 import io.github.kakaocup.kakao.text.KTextView

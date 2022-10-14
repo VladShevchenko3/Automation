@@ -3,7 +3,6 @@ package com.jens.automationKakao.screens.profilesScreen
 import androidx.test.espresso.Espresso
 import com.jens.automation2.R
 import io.github.kakaocup.kakao.check.KCheckBox
-import io.github.kakaocup.kakao.common.views.KView
 import io.github.kakaocup.kakao.edit.KEditText
 import io.github.kakaocup.kakao.progress.KSeekBar
 import io.github.kakaocup.kakao.screen.Screen
