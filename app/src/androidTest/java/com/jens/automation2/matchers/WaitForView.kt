@@ -7,6 +7,7 @@ import androidx.test.espresso.ViewInteraction
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import org.hamcrest.Matcher
+import java.lang.System.currentTimeMillis
 
 const val DEFAULT_TIMEOUT_MILLIS = 10_000L
 const val DEFAULT_INTERVAL_MILLIS = 250L
@@ -15,20 +16,18 @@ fun waitForView(
     timeoutMillis: Long = DEFAULT_TIMEOUT_MILLIS,
     intervalMillis: Long = DEFAULT_INTERVAL_MILLIS
 ): ViewInteraction {
-    val startTime = System.currentTimeMillis()
+    val startTime = currentTimeMillis()
     val endTime = startTime + timeoutMillis
 
     var lastException: Throwable
     do {
         try {
-            val interaction = onView(matcher)
-            interaction.check(matches(isDisplayed()))
-            return interaction
+            return onView(matcher).check(matches(isDisplayed()))
         } catch (e: NoMatchingViewException) {
             lastException = e
             ActionWaitingTime(intervalMillis)
         }
-    } while (System.currentTimeMillis() < endTime)
+    } while (currentTimeMillis() < endTime)
 
     throw lastException
 }

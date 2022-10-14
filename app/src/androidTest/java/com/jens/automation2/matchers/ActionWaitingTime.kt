@@ -3,7 +3,6 @@ package com.jens.automation2.matchers
 import android.view.View
 import androidx.test.espresso.UiController
 import androidx.test.espresso.ViewAction
-import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.isRoot
 import org.hamcrest.Matcher
 
