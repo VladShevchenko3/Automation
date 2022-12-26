@@ -1,7 +1,6 @@
 package com.jens.automation2.tests
 
 import androidx.test.ext.junit.rules.activityScenarioRule
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.jens.automation2.ActivityMainTabLayout
 import com.jens.automation2.screens.rules.AddRuleScreen
 import com.jens.automation2.screens.rules.RulesScreen
@@ -18,9 +17,7 @@ import com.jens.automation2.tests.DataForTests.TRIGGER_WIFI_DESCRIPTION
 import com.jens.automation2.tests.DataForTests.TRIGGER_WIFI_NAME
 import org.junit.Rule
 import org.junit.Test
-import org.junit.runner.RunWith
 
-@RunWith(AndroidJUnit4::class)
 class TestRules {
 
     @get:Rule

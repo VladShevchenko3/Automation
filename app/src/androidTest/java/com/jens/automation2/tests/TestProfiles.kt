@@ -1,7 +1,6 @@
 package com.jens.automation2.tests
 
 import androidx.test.ext.junit.rules.activityScenarioRule
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.jens.automation2.ActivityMainTabLayout
 import com.jens.automation2.screens.profiles.AddProfileScreen
 import com.jens.automation2.screens.profiles.ProfilesScreen
@@ -10,9 +9,7 @@ import com.jens.automation2.tests.DataForTests.PROFILE_NAME
 import com.jens.automation2.tests.DataForTests.SOUND_MODE
 import org.junit.Rule
 import org.junit.Test
-import org.junit.runner.RunWith
 
-@RunWith(AndroidJUnit4::class)
 class TestProfiles {
 
     @get:Rule
