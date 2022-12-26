@@ -1,7 +1,6 @@
 package com.jens.automationKakao.tests
 
 import androidx.test.ext.junit.rules.activityScenarioRule
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.jens.automation2.ActivityMainTabLayout
 import com.jens.automationKakao.screens.overviewScreen.OverviewScreen
 import com.jens.automationKakao.screens.rulesScreen.CreateNewRuleScreen
@@ -17,9 +16,8 @@ import com.jens.automationKakao.tests.DataForTests.Companion.TRIGGER_WIFI_NAME
 import io.github.kakaocup.kakao.screen.Screen.Companion.onScreen
 import org.junit.Rule
 import org.junit.Test
-import org.junit.runner.RunWith
 
-@RunWith(AndroidJUnit4::class)
+
 class TestOverview : BaseUITests {
 
     @get:Rule
