@@ -121,16 +121,20 @@ class TestRules {
         * Step 1. Open the Rules
         * Step 2. Click 'Add rule'
         * Step 3. Enter the name of the rule
-        * Step 4. Click 'Add action'
-        * Step 5. Select 'Trigger a URL' action
-        * Step 6. Set the URL, check 'Use authentication', set username, password and click 'save'
-        * Step 7. Double click on the created action
-        * Step 8. Edit the URL and click 'save'
-        * Step 9. Check the size of action list is equal to 1
-        * Step 10. Click 'Save the rule'
-        * Step 11. Check the rule is displayed
-        * Step 12. Delete the rule
-        * Step 13. Check the rule is not displayed
+        * Step 4. Click 'Add trigger'
+        * Step 5. Select 'Headset connection' trigger
+        * Step 6. Select the parameters and type of headphone, name and click 'Save'
+        * Step 7. Check the size of trigger list is equal to 1
+        * Step 8. Click 'Add action'
+        * Step 9. Select 'Trigger a URL' action
+        * Step 10. Set the URL, check 'Use authentication', set username, password and click 'save'
+        * Step 11. Double click on the created action
+        * Step 12. Edit the URL and click 'save'
+        * Step 13. Check the size of action list is equal to 1
+        * Step 14. Click 'Save the rule'
+        * Step 15. Check the rule is displayed
+        * Step 16. Delete the rule
+        * Step 17. Check the rule is not displayed
         * */
     @Test
     fun addTheRuleWithURLTriggerActionAndEditIt() {
@@ -140,6 +144,17 @@ class TestRules {
         }
         onScreen<NewRuleScreen> {
             actionTypeRuleName(RULE_NAME)
+            actionClickAddTriggerBtn()
+        }
+        onScreen<TriggerList> {
+            actionClickOnTheHeadsetConnection()
+        }
+        onScreen<HeadsetConnectionScreen> {
+            actionClickOnConnected()
+            actionClickOnHeadphone()
+        }
+        onScreen<NewRuleScreen> {
+            assertSizeOfTriggerList(1)
             actionClickAddActionBtn()
         }
         onScreen<ActionList> {
