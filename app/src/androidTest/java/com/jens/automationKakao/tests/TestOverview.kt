@@ -3,10 +3,12 @@ package com.jens.automationKakao.tests
 import androidx.test.ext.junit.rules.activityScenarioRule
 import com.jens.automation2.ActivityMainTabLayout
 import com.jens.automationKakao.screens.overviewScreen.OverviewScreen
-import com.jens.automationKakao.screens.rulesScreen.CreateNewRuleScreen
-import com.jens.automationKakao.screens.rulesScreen.RulesScreen
-import com.jens.automationKakao.screens.rulesScreen.actionsScreens.SetScreenBrightnessScreen
-import com.jens.automationKakao.screens.rulesScreen.triggersScreens.WifiConnectionScreen
+import com.jens.automationKakao.screens.rules.RulesScreen
+import com.jens.automationKakao.screens.rules.newRules.ActionList
+import com.jens.automationKakao.screens.rules.newRules.NewRuleScreen
+import com.jens.automationKakao.screens.rules.newRules.TriggerList
+import com.jens.automationKakao.screens.rules.newRules.actions.SetScreenBrightnessScreen
+import com.jens.automationKakao.screens.rules.newRules.triggers.WifiConnectionScreen
 import com.jens.automationKakao.tests.DataForTests.Companion.PERCENT_SCREEN_BRIGHTNESS
 import com.jens.automationKakao.tests.DataForTests.Companion.RULE_NAME
 import com.jens.automationKakao.tests.DataForTests.Companion.SERVICE_ACTIVATING_MESSAGE
@@ -40,26 +42,30 @@ class TestOverview : BaseUITests {
     fun checkLaunchingService() {
         onScreen<RulesScreen> {
             actionOpenRules()
-            actionClickOnAddRuleButton()
+            actionClickOnAddRuleBtn()
         }
-        onScreen<CreateNewRuleScreen> {
+        onScreen<NewRuleScreen> {
             actionTypeRuleName(RULE_NAME)
-            actionClickAddTriggerButton()
+            actionClickAddTriggerBtn()
+        }
+        onScreen<TriggerList> {
+            actionClickOnTheWifiConnection()
         }
         onScreen<WifiConnectionScreen> {
-            actionClickOnTheWifiConnection()
             actionTypeWifiName(TRIGGER_WIFI_NAME)
-            actionClickOnSaveWifiButton()
+            actionClickOnSaveBtn()
         }
-        onScreen<CreateNewRuleScreen> {
-            actionClickAddActionButton()
+        onScreen<NewRuleScreen> {
+            actionClickAddActionBtn()
+        }
+        onScreen<ActionList> {
+            actionClickOnSetScreenBrightness()
         }
         onScreen<SetScreenBrightnessScreen> {
-            actionClickOnSetScreenBrightness()
             actionSetProgressOnSeekBar(PERCENT_SCREEN_BRIGHTNESS)
             actionClickOnApplyButton()
         }
-        onScreen<CreateNewRuleScreen> {
+        onScreen<NewRuleScreen> {
             actionClickOnSaveRuleButton()
         }
         onScreen<OverviewScreen> {

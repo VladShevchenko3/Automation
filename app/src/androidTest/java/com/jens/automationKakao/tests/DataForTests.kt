@@ -13,5 +13,9 @@ class DataForTests {
         const val SERVICE_STARTED_MESSAGE = "Automation Service started."
         const val SERVICE_STOPPED_MESSAGE = "Automation service stopped."
         const val SERVICE_ACTIVATING_MESSAGE = "Activating rule $RULE_NAME"
+        const val URL_TRIGGER_DEV = "https://developer"
+        const val URL_TRIGGER_TESTER = "https://tester"
+        const val USERNAME = "Tester"
+        const val PASSWORD = "androidQA"
     }
 }

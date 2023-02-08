@@ -1,4 +1,4 @@
-package com.jens.automationKakao.screens.rulesScreen
+package com.jens.automationKakao.screens.rules
 
 import com.jens.automation2.R
 import com.jens.automationKakao.screens.WithTabs
@@ -12,7 +12,7 @@ class RulesScreen : Screen<RulesScreen>(), WithTabs {
     private val deleteRuleView = KTextView { withText(R.string.deleteCapital) }
     private fun nameRuleView(nameRule: String) = KTextView { withText(nameRule) }
 
-    fun actionClickOnAddRuleButton() {
+    fun actionClickOnAddRuleBtn() {
         addRuleButton {
             click()
         }
