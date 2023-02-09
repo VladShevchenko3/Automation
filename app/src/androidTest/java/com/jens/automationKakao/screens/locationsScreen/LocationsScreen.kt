@@ -8,12 +8,12 @@ import io.github.kakaocup.kakao.text.KTextView
 
 class LocationsScreen : Screen<LocationsScreen>(), WithTabs {
 
-    private val addLocationButton = KButton { withId(R.id.bAddPoi) }
+    private val addLocationBtn = KButton { withId(R.id.bAddPoi) }
     private val deleteLocationView = KTextView { withText(R.string.deleteCapital) }
     private fun locationNameView(locationName: String) = KTextView { withText(locationName) }
 
-    fun actionClickOnAddLocationButton() {
-        addLocationButton {
+    fun actionClickOnAddLocationBtn() {
+        addLocationBtn {
             click()
         }
     }
@@ -28,13 +28,13 @@ class LocationsScreen : Screen<LocationsScreen>(), WithTabs {
         }
     }
 
-    fun assertionLocationIsDisplayed(locationName: String) {
+    fun assertLocationIsDisplayed(locationName: String) {
         locationNameView(locationName).invoke {
             isVisible()
         }
     }
 
-    fun assertionLocationIsNotDisplayed(locationName: String) {
+    fun assertLocationIsNotDisplayed(locationName: String) {
         locationNameView(locationName).invoke {
             doesNotExist()
         }

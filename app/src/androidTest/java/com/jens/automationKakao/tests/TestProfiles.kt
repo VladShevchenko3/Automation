@@ -2,7 +2,7 @@ package com.jens.automationKakao.tests
 
 import androidx.test.ext.junit.rules.activityScenarioRule
 import com.jens.automation2.ActivityMainTabLayout
-import com.jens.automationKakao.screens.profilesScreen.AddProfileScreen
+import com.jens.automationKakao.screens.profilesScreen.NewProfileScreen
 import com.jens.automationKakao.screens.profilesScreen.ProfilesScreen
 import com.jens.automationKakao.tests.DataForTests.Companion.LEVEL_VOLUME_NOTIFICATIONS
 import com.jens.automationKakao.tests.DataForTests.Companion.PROFILE_NAME
@@ -32,16 +32,16 @@ class TestProfiles {
             actionOpenProfiles()
             actionClickOnAddProfile()
         }
-        onScreen<AddProfileScreen> {
-            actionTypeProfileName(PROFILE_NAME)
+        onScreen<NewProfileScreen> {
+            actionEditProfileName(PROFILE_NAME)
             actionChangeSoundMode(SOUND_MODE)
             actionChangeVolumeNotifications(LEVEL_VOLUME_NOTIFICATIONS)
-            actionCLickOnSaveProfileButton()
+            actionCLickOnSaveBtn()
         }
         onScreen<ProfilesScreen> {
-            assertionProfileIsDisplayed(PROFILE_NAME)
+            assertProfileIsDisplayed(PROFILE_NAME)
             actionDeleteProfileByName(PROFILE_NAME)
-            assertionProfileIsNotDisplayed(PROFILE_NAME)
+            assertProfileIsNotDisplayed(PROFILE_NAME)
         }
     }
 }

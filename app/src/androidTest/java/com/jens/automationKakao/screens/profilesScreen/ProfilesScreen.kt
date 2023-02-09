@@ -8,12 +8,12 @@ import io.github.kakaocup.kakao.text.KTextView
 
 class ProfilesScreen : Screen<ProfilesScreen>(), WithTabs {
 
-    private val addProfileButton = KButton { withId(R.id.bAddProfile) }
+    private val addProfileBtn = KButton { withId(R.id.bAddProfile) }
     private val deleteProfileView = KTextView { withText(R.string.deleteCapital) }
     private fun profileNameView(profileName: String) = KTextView { withText(profileName) }
 
     fun actionClickOnAddProfile() {
-        addProfileButton {
+        addProfileBtn {
             click()
         }
     }
@@ -27,13 +27,13 @@ class ProfilesScreen : Screen<ProfilesScreen>(), WithTabs {
         }
     }
 
-    fun assertionProfileIsDisplayed(profileName: String) {
+    fun assertProfileIsDisplayed(profileName: String) {
         profileNameView(profileName).invoke {
             isVisible()
         }
     }
 
-    fun assertionProfileIsNotDisplayed(profileName: String) {
+    fun assertProfileIsNotDisplayed(profileName: String) {
         profileNameView(profileName).invoke {
             doesNotExist()
         }

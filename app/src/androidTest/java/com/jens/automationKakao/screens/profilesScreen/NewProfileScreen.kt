@@ -9,19 +9,19 @@ import io.github.kakaocup.kakao.screen.Screen
 import io.github.kakaocup.kakao.text.KButton
 import io.github.kakaocup.kakao.text.KTextView
 
-class AddProfileScreen : Screen<AddProfileScreen>() {
+class NewProfileScreen : Screen<NewProfileScreen>() {
 
     private val profileNameTextField = KEditText { withId(R.id.etName) }
-    private val changeSoundModeCheckBox = KCheckBox { withId(R.id.checkBoxChangeSoundMode) }
+    private val changeSoundModeChk = KCheckBox { withId(R.id.checkBoxChangeSoundMode) }
     private val soundModeSpinner = KTextView { withId(R.id.spinnerSoundMode) }
-    private val changeVolumeNotificationsCheckBox = KCheckBox {
+    private val changeVolumeNotificationsChk = KCheckBox {
         withId(R.id.checkBoxChangeVolumeNotifications)
     }
     private val volumeNotificationsSeekBar = KSeekBar { withId(R.id.seekBarVolumeNotifications) }
-    private val saveProfileButton = KButton { withId(R.id.bSaveProfile) }
+    private val saveProfileBtn = KButton { withId(R.id.bSaveProfile) }
     private fun soundModeView(soundMode: String) = KTextView { withText(soundMode) }
 
-    fun actionTypeProfileName(profileName: String) {
+    fun actionEditProfileName(profileName: String) {
         profileNameTextField {
             typeText(profileName)
             Espresso.closeSoftKeyboard()
@@ -29,7 +29,7 @@ class AddProfileScreen : Screen<AddProfileScreen>() {
     }
 
     fun actionChangeSoundMode(soundMode: String) {
-        changeSoundModeCheckBox {
+        changeSoundModeChk {
             click()
         }
         soundModeSpinner {
@@ -41,7 +41,7 @@ class AddProfileScreen : Screen<AddProfileScreen>() {
     }
 
     fun actionChangeVolumeNotifications(progressVolume: Int) {
-        changeVolumeNotificationsCheckBox {
+        changeVolumeNotificationsChk {
             scrollTo()
             click()
         }
@@ -51,8 +51,8 @@ class AddProfileScreen : Screen<AddProfileScreen>() {
         }
     }
 
-    fun actionCLickOnSaveProfileButton() {
-        saveProfileButton {
+    fun actionCLickOnSaveBtn() {
+        saveProfileBtn {
             scrollTo()
             isVisible()
             click()

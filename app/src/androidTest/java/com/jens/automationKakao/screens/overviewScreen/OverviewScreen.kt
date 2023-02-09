@@ -12,13 +12,13 @@ import junit.framework.Assert.assertFalse
 
 class OverviewScreen : Screen<OverviewScreen>(), WithTabs {
 
-    private val serviceButton = KButton { withId(R.id.tbArmMastListener) }
+    private val serviceBtn = KButton { withId(R.id.tbArmMastListener) }
     private val statusOnView = KTextView { withText("ON") }
     private val device: UiDevice
         get() = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
 
-    fun actionClickOnServiceButton() {
-        serviceButton {
+    fun actionClickOnServiceBtn() {
+        serviceBtn {
             click()
         }
     }

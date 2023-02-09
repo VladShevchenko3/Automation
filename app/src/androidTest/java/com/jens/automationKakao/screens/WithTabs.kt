@@ -7,29 +7,29 @@ interface WithTabs {
 
     companion object {
         private val dashboard = KImageView { withId(android.R.id.tabs) }
-        private val rulesButton = KImageView { withText(R.string.rules) }
-        private val profilesButton = KImageView { withText(R.string.profiles) }
-        private val locationsButton = KImageView { withText(R.string.pois) }
-        private val overviewButton = KImageView { withText(R.string.overview) }
+        private val rulesBtn = KImageView { withText(R.string.rules) }
+        private val profilesBtn = KImageView { withText(R.string.profiles) }
+        private val locationsBtn = KImageView { withText(R.string.pois) }
+        private val overviewBtn = KImageView { withText(R.string.overview) }
     }
 
     fun actionOpenRules() {
         dashboard.isVisible()
-        rulesButton.click()
+        rulesBtn.click()
     }
 
     fun actionOpenProfiles() {
         dashboard.isVisible()
-        profilesButton.click()
+        profilesBtn.click()
     }
 
     fun actionOpenLocation() {
         dashboard.isVisible()
-        locationsButton.click()
+        locationsBtn.click()
     }
 
     fun actionOpenOverview() {
         dashboard.isVisible()
-        overviewButton.click()
+        overviewBtn.click()
     }
 }

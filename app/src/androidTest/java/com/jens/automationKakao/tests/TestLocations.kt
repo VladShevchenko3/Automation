@@ -3,7 +3,7 @@ package com.jens.automationKakao.tests
 import androidx.test.ext.junit.rules.activityScenarioRule
 import androidx.test.rule.GrantPermissionRule
 import com.jens.automation2.ActivityMainTabLayout
-import com.jens.automationKakao.screens.locationsScreen.AddLocationScreen
+import com.jens.automationKakao.screens.locationsScreen.NewLocationScreen
 import com.jens.automationKakao.screens.locationsScreen.LocationsScreen
 import com.jens.automationKakao.tests.DataForTests.Companion.LOCATION_NAME
 import io.github.kakaocup.kakao.screen.Screen.Companion.onScreen
@@ -34,17 +34,17 @@ class TestLocations : BaseUITests {
     fun checkAddingALocation() {
         onScreen<LocationsScreen> {
             actionOpenLocation()
-            actionClickOnAddLocationButton()
+            actionClickOnAddLocationBtn()
         }
-        onScreen<AddLocationScreen> {
+        onScreen<NewLocationScreen> {
             actionTypeTextOnLocationName(LOCATION_NAME)
             actionGetCurrentLocation()
-            actionCLickOnSaveLocationButton()
+            actionCLickOnSaveBtn()
         }
         onScreen<LocationsScreen> {
-            assertionLocationIsDisplayed(LOCATION_NAME)
+            assertLocationIsDisplayed(LOCATION_NAME)
             actionDeleteLocationByName(LOCATION_NAME)
-            assertionLocationIsNotDisplayed(LOCATION_NAME)
+            assertLocationIsNotDisplayed(LOCATION_NAME)
         }
     }
 }

@@ -70,11 +70,11 @@ class TestOverview : BaseUITests {
         }
         onScreen<OverviewScreen> {
             actionOpenOverview()
-            actionClickOnServiceButton()
+            actionClickOnServiceBtn()
             assertionServiceButtonStatusON()
             actionWaitForViewDoesNotExist(SERVICE_STARTED_MESSAGE)
             actionWaitForViewDoesNotExist(SERVICE_ACTIVATING_MESSAGE)
-            actionClickOnServiceButton()
+            actionClickOnServiceBtn()
             actionWaitForViewDoesNotExist(SERVICE_STOPPED_MESSAGE)
         }
         onScreen<RulesScreen> {

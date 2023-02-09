@@ -7,23 +7,23 @@ import io.github.kakaocup.kakao.screen.Screen
 import io.github.kakaocup.kakao.text.KButton
 import io.github.kakaocup.kakao.text.KTextView
 
-class AddLocationScreen : Screen<AddLocationScreen>() {
+class NewLocationScreen : Screen<NewLocationScreen>() {
 
-    private val locationNameTextField = KEditText { withId(R.id.etPoiName) }
-    private val getCurrentLocationButton = KButton { withId(R.id.bGetPosition) }
-    private val saveLocationButton = KButton { withId(R.id.bSavePoi) }
+    private val locationName = KEditText { withId(R.id.etPoiName) }
+    private val getCurrentLocationBtn = KButton { withId(R.id.bGetPosition) }
+    private val saveBtn = KButton { withId(R.id.bSavePoi) }
     private val yesView = KTextView { withText(R.string.yes) }
     private val okView = KTextView { withText(R.string.ok) }
 
     fun actionTypeTextOnLocationName(locationName: String) {
-        locationNameTextField {
+        locationName {
             typeText(locationName)
             Espresso.closeSoftKeyboard()
         }
     }
 
     fun actionGetCurrentLocation() {
-        getCurrentLocationButton {
+        getCurrentLocationBtn {
             click()
         }
         okView {
@@ -34,8 +34,8 @@ class AddLocationScreen : Screen<AddLocationScreen>() {
         }
     }
 
-    fun actionCLickOnSaveLocationButton() {
-        saveLocationButton {
+    fun actionCLickOnSaveBtn() {
+        saveBtn {
             click()
         }
     }
