@@ -3,11 +3,13 @@ package com.jens.automationKakao.screens.rules.newRules
 import androidx.test.espresso.DataInteraction
 import androidx.test.espresso.Espresso
 import com.jens.automation2.R
+import io.github.kakaocup.kakao.check.KCheckBox
 import io.github.kakaocup.kakao.edit.KEditText
 import io.github.kakaocup.kakao.list.KAbsListView
 import io.github.kakaocup.kakao.list.KAdapterItem
 import io.github.kakaocup.kakao.screen.Screen
 import io.github.kakaocup.kakao.text.KButton
+import io.github.kakaocup.kakao.text.KTextView
 
 class NewRuleScreen : Screen<NewRuleScreen>() {
 
@@ -15,7 +17,8 @@ class NewRuleScreen : Screen<NewRuleScreen>() {
     private val saveBtn = KButton { withId(R.id.cmdSaveRule) }
     private val addTriggerBtn = KButton { withId(R.id.cmdTriggerAdd) }
     private val addActionBtn = KButton { withId(R.id.cmdActionAdd) }
-    private val deleteBtn = KButton{withText("delete")}
+    private val deleteBtn = KButton { withText("delete") }
+    private val ruleActiveChk = KCheckBox { withId(R.id.chkRuleActive) }
     private val actionList = KAbsListView(
         builder = { withId(R.id.lvActionListView) },
         itemTypeBuilder = { itemType(::Item) })
@@ -24,7 +27,7 @@ class NewRuleScreen : Screen<NewRuleScreen>() {
         itemTypeBuilder = { itemType(::Item) })
 
     class Item(i: DataInteraction) : KAdapterItem<Item>(i) {
-        val title = String
+        val title = KTextView(i) { withId(R.id.textTrigger) }
     }
 
     fun actionTypeRuleName(ruleName: String) {
@@ -47,19 +50,25 @@ class NewRuleScreen : Screen<NewRuleScreen>() {
         }
     }
 
+    fun actionClickOnRuleActiveCheckBox() {
+        ruleActiveChk {
+            click()
+        }
+    }
+
     fun actionClickOnSaveBtn() {
         saveBtn {
             click()
         }
     }
 
-    fun actionDeleteItemInTriggerListByPosition(position: Int){
-        triggerList{
-            childAt<Item>(position){
-               longClick()
+    fun actionDeleteItemInTriggerListByPosition(position: Int) {
+        triggerList {
+            childAt<Item>(position) {
+                longClick()
             }
         }
-        deleteBtn{
+        deleteBtn {
             click()
         }
     }
@@ -77,18 +86,21 @@ class NewRuleScreen : Screen<NewRuleScreen>() {
             hasSize(size)
         }
     }
-    fun assertTriggerItem(position: Int) {
+
+    fun assertTriggerItemTitle(position: Int) {
         triggerList {
             childAt<Item>(position) {
                 //TODO()
             }
         }
     }
+
     fun assertSizeOfActionList(size: Int) {
         actionList {
             hasSize(size)
         }
     }
+
     fun assertActionItem(position: Int, title1: String) {
         actionList {
             childAt<Item>(position) {

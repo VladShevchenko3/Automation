@@ -79,8 +79,8 @@ class TestOverview : BaseUITests {
         }
         onScreen<RulesScreen> {
             actionOpenRules()
-            actionDeleteFirstRule()
-            actionDeleteFirstRule()
+            actionDeleteTheRuleByPosition(0)
+            actionDeleteTheRuleByPosition(0)
            assertSizeOfRuleList(0)
         }
     }

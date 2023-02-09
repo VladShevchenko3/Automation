@@ -4,6 +4,7 @@ class DataForTests {
 
     companion object {
         const val RULE_NAME = "New rule"
+        const val RULE_NAME_CLONE = "New rule - clone"
         const val LOCATION_NAME = "New location"
         const val PROFILE_NAME = "New profile"
         const val TRIGGER_WIFI_NAME = "network1.0.1"

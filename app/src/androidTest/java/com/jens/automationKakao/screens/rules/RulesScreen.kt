@@ -14,6 +14,8 @@ class RulesScreen : Screen<RulesScreen>(), WithTabs {
 
     private val addRuleBtn = KButton { withId(R.id.bAddRule) }
     private val deleteRuleView = KTextView { withText(R.string.deleteCapital) }
+    private val cloneRuleView = KTextView { withText(R.string.clone) }
+    private val editRuleView = KTextView { withText(R.string.edit) }
 
     private val ruleList = KAbsListView(
         builder = { withId(R.id.lvRuleList) },
@@ -30,9 +32,9 @@ class RulesScreen : Screen<RulesScreen>(), WithTabs {
         }
     }
 
-    fun actionDeleteFirstRule() {
+    fun actionDeleteTheRuleByPosition(position: Int) {
         ruleList {
-            firstChild<RuleItem> {
+            childAt<RuleItem>(position) {
                 name {
                     longClick()
                 }
@@ -43,11 +45,67 @@ class RulesScreen : Screen<RulesScreen>(), WithTabs {
         }
     }
 
-    fun assertFirstRuleIsDisplayed(nameRule: String) {
+    fun actionCloneTheRuleByPosition(position: Int) {
         ruleList {
-            firstChild<RuleItem> {
+            childAt<RuleItem>(position) {
+                name {
+                    longClick()
+                }
+            }
+        }
+        cloneRuleView {
+            click()
+        }
+    }
+
+    fun actionEditTheRuleByPosition(position: Int) {
+        ruleList {
+            childAt<RuleItem>(position) {
+                name {
+                    longClick()
+                }
+            }
+        }
+        editRuleView {
+            click()
+        }
+    }
+
+    fun assertTheRuleIsDisplayedByPosition(position: Int, nameRule: String) {
+        ruleList {
+            childAt<RuleItem>(position) {
                 name {
                     hasText(nameRule)
+                }
+            }
+        }
+    }
+
+    fun assertTheRuleStatusIsActiveByPosition(position: Int) {
+        ruleList {
+            childAt<RuleItem>(position) {
+                image {
+                    hasDrawable(R.drawable.status_active)
+                }
+            }
+        }
+    }
+
+    fun assertTheRuleStatusIsInactiveByPosition(position: Int) {
+        ruleList {
+            childAt<RuleItem>(position) {
+                image {
+                    hasDrawable(R.drawable.status_inactive)
+                }
+            }
+        }
+    }
+
+    fun assertTheRuleStatusIsUnableByPosition(position: Int) {
+        ruleList {
+            childAt<RuleItem>(position) {
+                image {
+                    hasDrawable(R.drawable.status_unable)
                 }
             }
         }

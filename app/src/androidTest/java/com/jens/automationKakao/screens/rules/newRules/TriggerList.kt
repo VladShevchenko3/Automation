@@ -9,6 +9,7 @@ class TriggerList : Screen<TriggerList>() {
 
     private val headsetConnectionString = "Headset connection"
     private val wifiConnectionString = "Wifi connection"
+    private val locationString = "Location"
 
     fun actionClickOnTheHeadsetConnection() {
         onData(actionItemWithName(headsetConnectionString)).perform(click())
@@ -16,5 +17,9 @@ class TriggerList : Screen<TriggerList>() {
 
     fun actionClickOnTheWifiConnection() {
         onData(actionItemWithName(wifiConnectionString)).perform(click())
+    }
+
+    fun actionClickOnTheLocation() {
+        onData(actionItemWithName(locationString)).perform(click())
     }
 }
