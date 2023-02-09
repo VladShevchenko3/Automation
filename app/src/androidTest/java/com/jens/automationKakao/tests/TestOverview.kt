@@ -66,7 +66,7 @@ class TestOverview : BaseUITests {
             actionClickOnApplyButton()
         }
         onScreen<NewRuleScreen> {
-            actionClickOnSaveRuleButton()
+            actionClickOnSaveBtn()
         }
         onScreen<OverviewScreen> {
             actionOpenOverview()
@@ -79,9 +79,9 @@ class TestOverview : BaseUITests {
         }
         onScreen<RulesScreen> {
             actionOpenRules()
-            actionDeleteRuleByName(RULE_NAME)
-            actionDeleteRuleByName(RULE_NAME)
-            assertionRuleIsNotDisplayed(RULE_NAME)
+            actionDeleteFirstRule()
+            actionDeleteFirstRule()
+           assertSizeOfRuleList(0)
         }
     }
 }

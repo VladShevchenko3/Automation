@@ -46,7 +46,7 @@ class TriggerAUrlScreen : Screen<TriggerAUrlScreen>() {
         }
     }
 
-    fun actionClickOnSaveButton() {
+    fun actionClickOnSaveBtn() {
         saveBtn {
             scrollTo()
             click()

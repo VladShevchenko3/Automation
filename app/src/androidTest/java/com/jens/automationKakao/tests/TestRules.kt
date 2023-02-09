@@ -92,7 +92,7 @@ class TestRules {
             actionCheckUseAuthentication()
             actionEditUserName(USERNAME)
             actionEditPassword(PASSWORD)
-            actionClickOnSaveButton()
+            actionClickOnSaveBtn()
         }
         onScreen<NewRuleScreen> {
             assertSizeOfActionList(1)
@@ -107,12 +107,12 @@ class TestRules {
         }
         onScreen<NewRuleScreen> {
             assertSizeOfActionList(2)
-            actionClickOnSaveRuleButton()
+            actionClickOnSaveBtn()
         }
         onScreen<RulesScreen> {
-            assertionRuleIsDisplayed(RULE_NAME)
-            actionDeleteRuleByName(RULE_NAME)
-            assertionRuleIsNotDisplayed(RULE_NAME)
+            assertFirstRuleIsDisplayed(RULE_NAME)
+            actionDeleteFirstRule()
+            assertSizeOfRuleList(0)
         }
     }
 
@@ -120,21 +120,12 @@ class TestRules {
         *  Test 2. Scenario
         * Step 1. Open the Rules
         * Step 2. Click 'Add rule'
-        * Step 3. Enter the name of the rule
-        * Step 4. Click 'Add trigger'
-        * Step 5. Select 'Headset connection' trigger
-        * Step 6. Select the parameters and type of headphone, name and click 'Save'
-        * Step 7. Check the size of trigger list is equal to 1
-        * Step 8. Click 'Add action'
-        * Step 9. Select 'Trigger a URL' action
-        * Step 10. Set the URL, check 'Use authentication', set username, password and click 'save'
-        * Step 11. Double click on the created action
-        * Step 12. Edit the URL and click 'save'
-        * Step 13. Check the size of action list is equal to 1
-        * Step 14. Click 'Save the rule'
-        * Step 15. Check the rule is displayed
-        * Step 16. Delete the rule
-        * Step 17. Check the rule is not displayed
+        * Step 3. Click 'Add action'
+        * Step 4. Select 'Trigger a URL' action
+        * Step 5. Set the URL, check 'Use authentication', set username, password and click 'save'
+        * Step 6. Double click on the created action
+        * Step 7. Edit the URL and click 'save'
+        * Step 8. Check the size of action list is equal to 1
         * */
     @Test
     fun addTheRuleWithURLTriggerActionAndEditIt() {
@@ -143,7 +134,49 @@ class TestRules {
             actionClickOnAddRuleBtn()
         }
         onScreen<NewRuleScreen> {
-            actionTypeRuleName(RULE_NAME)
+            actionClickAddActionBtn()
+        }
+        onScreen<ActionList> {
+            actionClickOnTriggerAUrl()
+        }
+        onScreen<TriggerAUrlScreen> {
+            actionEditUrlTrigger(URL_TRIGGER_DEV)
+            actionCheckUseAuthentication()
+            actionEditUserName(USERNAME)
+            actionEditPassword(PASSWORD)
+            actionClickOnSaveBtn()
+        }
+        onScreen<NewRuleScreen> {
+            actionDoubleClickOnActionItemByPosition(0)
+        }
+        onScreen<TriggerAUrlScreen> {
+            actionEditUrlTrigger(URL_TRIGGER_TESTER)
+            actionClickOnSaveBtn()
+        }
+        onScreen<NewRuleScreen> {
+            assertSizeOfActionList(1)
+        }
+    }
+
+    /*
+        *  Test 3. Scenario
+        * Step 1. Open the Rules
+        * Step 2. Click 'Add rule'
+        * Step 3. Click 'Add trigger'
+        * Step 4. Select 'Wifi connection' trigger
+        * Step 5. Select the stage, set the name and click 'Save'
+        * Step 6. Check the size of trigger list is equal to 1
+        * Step 7. Long click on the trigger in trigger list
+        * Step 8. Select 'delete'
+        * Step 9. Check the size of trigger list is equal to 0
+        * */
+    @Test
+    fun deleteTheTriggerInTheNewRule() {
+        onScreen<RulesScreen> {
+            actionOpenRules()
+            actionClickOnAddRuleBtn()
+        }
+        onScreen<NewRuleScreen> {
             actionClickAddTriggerBtn()
         }
         onScreen<TriggerList> {
@@ -155,33 +188,9 @@ class TestRules {
         }
         onScreen<NewRuleScreen> {
             assertSizeOfTriggerList(1)
-            actionClickAddActionBtn()
+            actionDeleteItemInTriggerListByPosition(0)
+            assertSizeOfTriggerList(0)
         }
-        onScreen<ActionList> {
-            actionClickOnTriggerAUrl()
-        }
-        onScreen<TriggerAUrlScreen> {
-            actionEditUrlTrigger(URL_TRIGGER_DEV)
-            actionCheckUseAuthentication()
-            actionEditUserName(USERNAME)
-            actionEditPassword(PASSWORD)
-            actionClickOnSaveButton()
-        }
-        onScreen<NewRuleScreen> {
-            actionDoubleClickOnActionItem(0)
-        }
-        onScreen<TriggerAUrlScreen> {
-            actionEditUrlTrigger(URL_TRIGGER_TESTER)
-            actionClickOnSaveButton()
-        }
-        onScreen<NewRuleScreen> {
-            assertSizeOfActionList(1)
-            actionClickOnSaveRuleButton()
-        }
-        onScreen<RulesScreen> {
-            assertionRuleIsDisplayed(RULE_NAME)
-            actionDeleteRuleByName(RULE_NAME)
-            assertionRuleIsNotDisplayed(RULE_NAME)
-        }
+
     }
 }
